@@ -1,25 +1,20 @@
 {
-    "name": "Getting Started Example",
-    "description": "Build an Extension!",
-    "version": "1.0",
-    "manifest_version": 3,
+    "name": "Addblock-HTML",
+    "description": "Master's thesis in Cybersecurity, consisting of the creation of an extension for the Google Chrome browser capable of blocking advertising on web pages, based on the detection of advertising in the HTML files of the pages and subsequent removal of the corresponding HTML code fragment.",
+    "version": "0.1",
+    "author": "Diego García",
+    "manifest_version": 2,
+    "permissions": [
+        "tabs",
+        "webNavigation",
+        "https://www.linkedin.com/"
+    ],    
+    "browser_action": {
+      "default_title": "Addblock-HTML"
+    },
     "background": {
-      "service_worker": "background.js"
-    },
-    "permissions": ["storage", "activeTab", "scripting"],    "action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "/images/get_started16.png",
-        "32": "/images/get_started32.png",
-        "48": "/images/get_started48.png",
-        "128": "/images/get_started128.png"
-      }
-    },
-    "icons": {
-      "16": "/images/get_started16.png",
-      "32": "/images/get_started32.png",
-      "48": "/images/get_started48.png",
-      "128": "/images/get_started128.png"
-    },
-    "options_page": "options.html"
+      "scripts": [
+          "extension.js"
+      ]
   }
+}
