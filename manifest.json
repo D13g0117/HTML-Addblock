@@ -7,14 +7,16 @@
     "permissions": [
         "tabs",
         "webNavigation",
-        "https://www.linkedin.com/"
+        "<all_urls>",
+        "diariosur.es"
     ],    
     "browser_action": {
       "default_title": "Addblock-HTML"
     },
     "background": {
       "scripts": [
-          "extension.js"
+          "extension.js",
+          "removeadds.js"
       ]
   }
 }

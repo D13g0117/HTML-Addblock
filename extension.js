@@ -7,7 +7,6 @@ chrome.webNavigation.onCommitted.addListener(function (tab) {
     // Prevents script from running when other frames load
     if (tab.frameId == 0) {
         chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
-
             // Get the URL of the webpage
             let url = tabs[0].url;
             // Remove unnecessary protocol definitions and www subdomain from the URL
@@ -19,18 +18,18 @@ chrome.webNavigation.onCommitted.addListener(function (tab) {
             // We only want the base domain
             let domain = parsedUrl.slice(0, parsedUrl.indexOf('/') == -1 ? parsedUrl.length : parsedUrl.indexOf('/'))
                 .slice(0, parsedUrl.indexOf('?') == -1 ? parsedUrl.length : parsedUrl.indexOf('?'));
-
+            console.log(domain);
             try {
                 if (domain.length < 1 || domain === null || domain === undefined) {
                     return;
-                } else if (domain == "linkedin.com") {
+                } else {
                     runLinkedinScript();
                     return;
                 }
+                
             } catch (err) {
                 throw err;
             }
-
         });
     }
 });
