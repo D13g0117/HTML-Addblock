@@ -7,8 +7,7 @@
     "permissions": [
         "tabs",
         "webNavigation",
-        "<all_urls>",
-        "diariosur.es"
+        "<all_urls>"
     ],    
     "browser_action": {
       "default_title": "Addblock-HTML"
