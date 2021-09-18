@@ -3,7 +3,7 @@
     As opposed to e.g. webNavigation.onCompleted, this will start to run early
     so that we can begin to remove ads as soon as possible.
 */
-chrome.webNavigation.onCommitted.addListener(function (tab) {
+chrome.webNavigation.onCompleted.addListener(function (tab) {
     // Prevents script from running when other frames load
     if (tab.frameId == 0) {
         chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {

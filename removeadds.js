@@ -1,4 +1,4 @@
-var adv_list = ["adv","ads","GoogleActiveViewElement","advertisement","google_ad","googleads"];
+var adv_list = ["adv","ads","GoogleActiveViewElement","advertisement","google_ad","googleads", "-ad-", "advertising", "publi", "publicidad", "-web-ad-"];
 
 function detectAd(ad_key_word) {
 
@@ -48,7 +48,7 @@ function detectAdKeyWords(){
     for (var x = 0; x < allClasses.length; x++) {
         let str = allClasses[x];
         for (var y = 0; y < adv_list.length; y++){
-            if (str.includes(adv_list[y])){
+            if (str.includes(adv_list[y]) || str.localeCompare(adv_list[y]) == 0){
                 allAds.push(allClasses[x]);
                 detectAd(allClasses[x]);
             }
@@ -57,6 +57,34 @@ function detectAdKeyWords(){
     console.log(allAds);
 }
 
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                var text = [];
+                 var j = 0;
+                for (i = 0; i < allText.length; i++) {
+                    text[j] = text[j] + allText[i]
+                    console.log(text);
+                    if (allText[i].match("/n") == 0) {
+                        j = j + 1;
+                    }
+                }
+                alert(text);
+            }
+        }
+    }
+    rawFile.send(null);
+}
+
+readTextFile("./ad-key-words.txt");
 detectAdKeyWords();
 //detectAd();
 
