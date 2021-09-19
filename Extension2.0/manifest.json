@@ -1,0 +1,21 @@
+{
+    "name": "Anti-procastrination",
+    "description": "Extension para centrarme",
+    "version": "0.1",
+    "author": "Diego García",
+    "manifest_version": 2,
+    "permissions": [
+        "tabs",
+        "webNavigation",
+        "<all_urls>"
+    ],    
+    "browser_action": {
+      "default_title": "Anti-procastrination"
+    },
+    "background": {
+      "scripts": [
+          "extension.js",
+          "script.js"
+       ]
+  }
+}
