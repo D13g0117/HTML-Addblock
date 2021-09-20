@@ -15,7 +15,7 @@
     "background": {
       "scripts": [
           "extension.js",
-          "removeadds.js"
+          "removeads.js"
       ]
   }
 }

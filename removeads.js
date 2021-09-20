@@ -1,5 +1,7 @@
+// List of key words to remove
 var adv_list = ["adv","ads","GoogleActiveViewElement","advertisement","google_ad","googleads", "-ad-", "advertising", "publi", "publicidad", "-web-ad-"];
 
+// Deletes all the specified classes from the html document
 function detectAd(ad_key_word) {
 
     let by_class = document.getElementsByClassName(ad_key_word);
@@ -20,16 +22,19 @@ function detectAd(ad_key_word) {
     }
 }
 
+// Hides the specified element
 function hideAd(element) {
     element.setAttribute("style", "display: none !important;");
     console.log(element + " --> has been hided!");
 }
 
+// Removes the specified element
 function removeAd(element) {
     element.remove();
     console.log(element + " --> has been removed!");
 }
 
+// Detects all the classes that might haver ads on them
 function detectAdKeyWords(){
     var allClasses = [];
     var allAds = [];
@@ -57,41 +62,14 @@ function detectAdKeyWords(){
     console.log(allAds);
 }
 
-function readTextFile(file)
-{
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
-                var text = [];
-                 var j = 0;
-                for (i = 0; i < allText.length; i++) {
-                    text[j] = text[j] + allText[i]
-                    console.log(text);
-                    if (allText[i].match("/n") == 0) {
-                        j = j + 1;
-                    }
-                }
-                alert(text);
-            }
-        }
-    }
-    rawFile.send(null);
-}
-
-readTextFile("./ad-key-words.txt");
 detectAdKeyWords();
-//detectAd();
 
-// Ensures ads will be removed as the user scrolls
+/*
+    Ensures ads will be removed periodically in case new ads appear after the page has been loaded, 
+    e.g., if the user scrolls the page, script that generates ads, etc.
+*/
 setInterval(function () {
     detectAdKeyWords();
-    //detectAd();
 }, 200)
 
 

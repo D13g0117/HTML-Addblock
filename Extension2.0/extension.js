@@ -23,7 +23,7 @@ chrome.webNavigation.onCommitted.addListener(function (tab) {
                 if (domain.length < 1 || domain === null || domain === undefined) {
                     return;
                 } else {
-                    if (domain == "youtube.com" || domain == "es.pornhub.com" || domain == "gamcore.com"){
+                    if (domain == "youtube.com" || domain == "es.pornhub.com" || domain == "gamcore.com" || domain == "twitch.tv"){
                         chrome.tabs.executeScript({
                             file: 'script.js'
                         });
