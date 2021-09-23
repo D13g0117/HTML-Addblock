@@ -12,13 +12,13 @@ function detectAd(ad_key_word) {
 
     if (spans.length == 0) {
         if (by_id != null){
-            removeAd(by_id);
+            hideAd(by_id);
         }
     }
     
     for (let i = 0; i < spans.length; ++i) {
         let ad = spans[i];
-        removeAd(ad);   
+        hideAd(ad);   
     }
 }
 
@@ -38,18 +38,22 @@ function removeAd(element) {
 function detectAdKeyWords(){
     var allClasses = [];
     var allAds = [];
-
+    var allIds = [];
     var allElements = document.querySelectorAll('*');
 
     for (var i = 0; i < allElements.length; i++) {
-    var classes = allElements[i].className.toString().split(/\s+/);
-    for (var j = 0; j < classes.length; j++) {
-        var cls = classes[j];
-        if (cls && allClasses.indexOf(cls) === -1)
-        allClasses.push(cls);
-        }
+        var ids = allElements[i];
+        if (ids.id) {
+             allIds.push(ids.id.toString()); 
+            }
+        var classes = allElements[i].className.toString().split(/\s+/);
+        for (var j = 0; j < classes.length; j++) {
+                var cls = classes[j];
+            if (cls && allClasses.indexOf(cls) === -1)
+                allClasses.push(cls);
+            }
     }
-
+    
     for (var x = 0; x < allClasses.length; x++) {
         let str = allClasses[x];
         for (var y = 0; y < adv_list.length; y++){
@@ -59,7 +63,13 @@ function detectAdKeyWords(){
             }
         }
     }
-    console.log(allAds);
+
+    for (var w = 0; w < allIds.length; w++) {
+        let ids = allIds[w];
+        if (ids.includes("google_ads")){
+            detectAd(ids);
+        } 
+    }
 }
 
 detectAdKeyWords();
