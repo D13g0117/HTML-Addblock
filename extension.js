@@ -11,7 +11,7 @@ chrome.webNavigation.onCompleted.addListener(function (tab) {
     if (tab.frameId == 0) {
         chrome.tabs.query({ active: true, lastFocusedWindow: true }, tabs => {
             try {
-                runLinkedinScript();
+                runScript();
                 return;
             } catch (err) {
                 throw err;
@@ -21,25 +21,10 @@ chrome.webNavigation.onCompleted.addListener(function (tab) {
 });
 
 
-function runLinkedinScript() {
+function runScript() {
     // Inject the script to remove ads from file into the webpage
     chrome.tabs.executeScript({
         file: 'removeads.js'
     });
     return true;
 }
-
-/*
-            // Get the URL of the webpage
-            let url = tabs[0].url;
-            // Remove unnecessary protocol definitions and www subdomain from the URL
-            let parsedUrl = url.replace("https://", "")
-                .replace("http://", "")
-                .replace("www.", "")
-
-            // Remove path and queries e.g. linkedin.com/feed or linkedin.com?query=value
-            // We only want the base domain
-            let domain = parsedUrl.slice(0, parsedUrl.indexOf('/') == -1 ? parsedUrl.length : parsedUrl.indexOf('/'))
-                .slice(0, parsedUrl.indexOf('?') == -1 ? parsedUrl.length : parsedUrl.indexOf('?'));
-            console.log(domain);
-*/

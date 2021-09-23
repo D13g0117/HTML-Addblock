@@ -1,0 +1,21 @@
+{
+    "name": "Addblock-HTML",
+    "description": "Master's thesis in Cybersecurity, consisting of the creation of an extension for the Google Chrome browser capable of blocking advertising on web pages, based on the detection of advertising in the HTML files of the pages and subsequent removal of the corresponding HTML code fragment.",
+    "version": "0.1",
+    "author": "Diego García",
+    "manifest_version": 2,
+    "permissions": [
+        "tabs",
+        "webNavigation",
+        "<all_urls>"
+    ],    
+    "browser_action": {
+      "default_title": "Addblock-HTML"
+    },
+    "background": {
+      "scripts": [
+          "extension.js",
+          "removeads.js"
+      ]
+  }
+}
